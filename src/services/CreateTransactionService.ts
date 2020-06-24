@@ -16,6 +16,10 @@ class CreateTransactionService {
 
   public execute({ title, value, type }: Request): Transaction {
     if (!['income', 'outcome'].includes(type)) {
+      /*
+       * Tradução: Se NÃO tiver "income" OU "outcome" vindo dentro (includes) de "type"
+       * Responda com erro
+       */
       throw new Error('Transactions is invalid');
     }
     const { total } = this.transactionsRepository.getBalance();
